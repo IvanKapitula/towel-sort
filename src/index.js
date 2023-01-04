@@ -2,12 +2,20 @@
 // You should implement your task here.
 
 module.exports = function towelSort (matrix) {
-        let result = '';
-        for(let i = 0; i < matrix.length; i++){
-            result = (result) + matrix[i].join('');
+    if(matrix === undefined){
+        return [];
+    }else {
+        let result = [];
+        let matrixMod = matrix.map( function(item,index){
+            if ((index + 1) % 2 === 0){
+                return item.reverse();
+            }else{
+                return item;
+            }
+        })
+        for(let key of matrixMod){
+            result = result.concat(key);
         }
-        return result.split('').sort(function(a,b) {
-            return a - b;
-        }
-        )
+        return result;
+    }
 }
